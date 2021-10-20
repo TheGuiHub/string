@@ -1,0 +1,39 @@
+package br.com.the Gui hub.cadastrodelivros.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.andersonchoren.cadastrodelivros.model.Book;
+import br.com.andersonchoren.cadastrodelivros.repository.BookRepository;
+
+@Service
+public class BookService {
+    @Autowired
+    private BookRepository bookRepository;
+
+    public Book insert(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Book update(Book objBook) {
+        return bookRepository.save(objBook);
+    }
+
+    public List<Book> findAll() {
+        List<Book> books = new ArrayList<>();
+        bookRepository.findAll().forEach(books::add);
+        return books;
+    }
+
+    public Optional<Book> findOne(Integer id) {
+        return bookRepository.findById(id);
+    }
+
+    public void remove(Integer id) {
+        bookRepository.deleteById(id);
+    }
+}
